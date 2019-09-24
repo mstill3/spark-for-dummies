@@ -5,23 +5,23 @@ Understanding Spark 2.x one step at a time
 
 Setup spark by running:   
 
-   bin/installSpark.sh
+    bin/installSpark.sh
 
 
 Install python3:   
 
-   sudo apt install pip3-python
+    sudo apt install pip3-python
 
 
 Install python3 libs:   
 
-   pip3 install jupyter
-   pip3 install py4j
+    pip3 install jupyter
+    pip3 install py4j
 
 
 ## Launching
 
 To launch run:
 
-   jupyter notebook
+    jupyter notebook
 
