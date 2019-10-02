@@ -29,13 +29,7 @@ Setup spark by running:
     bin/installSpark.sh
 
 
-Install python3:   
+Setup python3:   
 
-    sudo apt install pip3-python
-
-
-Install python3 libs:   
-
-    pip3 install jupyter
-    pip3 install py4j
+    bin/setupPython.sh
     
