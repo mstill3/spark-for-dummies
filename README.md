@@ -1,7 +1,6 @@
 # Spark for Dummies
 Understanding Spark 2 one step at a time
 
-display(HTML("
 <table>
     <tr>
         <td>
@@ -14,7 +13,7 @@ display(HTML("
             <img src="https://databricks.com/wp-content/uploads/2018/03/db-academy-rgb-1200px.png" alt="databricks acedemy" width="200"/>
         </td>
     </tr>
-</table>"))
+</table>
 
 ## Resources
 
