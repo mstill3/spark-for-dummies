@@ -1,10 +1,20 @@
 # Spark for Dummies
 Understanding Spark 2 one step at a time
 
-
-<img src="https://spark.apache.org/images/spark-logo-trademark.png" alt="spark" width="200"/>
-<img src="https://databricks.com/wp-content/themes/databricks/assets/images/header_logo_2x.png" alt="databricks" width="200"/>
-<!-- <img src="https://databricks.com/wp-content/uploads/2018/03/db-academy-rgb-1200px.png" alt="databricks acedemy" width="200"/> -->
+display(HTML("
+<table>
+    <tr>
+        <td>
+            <img src="https://spark.apache.org/images/spark-logo-trademark.png" alt="spark" width="200">
+        </td>
+        <td>
+            <img src="https://databricks.com/wp-content/themes/databricks/assets/images/header_logo_2x.png" alt="databricks" width="200">
+        </td>
+        <td>
+            <img src="https://databricks.com/wp-content/uploads/2018/03/db-academy-rgb-1200px.png" alt="databricks acedemy" width="200"/>
+        </td>
+    </tr>
+</table>"))
 
 ## Resources
 
