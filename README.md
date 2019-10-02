@@ -29,7 +29,18 @@ Setup spark by running:
     bin/installSpark.sh
 
 
-Setup python3:   
+Install python3:   
 
-    bin/setupPython.sh
-    
+    sudo apt install pip3-python
+
+
+Install python3 libs:   
+
+    pip3 install jupyter py4j
+
+## Projects
+
+* [Databricks Spark Training](projects/databricks)
+* [Udemy Spark for Big Data](projects/udemy)
+
+
