@@ -36,3 +36,10 @@ export PATH=$SPARK_HOME/bin:"'$PATH'"
 echo -e "\e[1;32mLog out or run
 source ~/.profile
 to be sure your environment variables are set up correctly\e[m"
+
+# Install python3
+sudo apt install pip3-python
+
+# Install python3 libs
+pip3 install jupyter
+pip3 install py4j
