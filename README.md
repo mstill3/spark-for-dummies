@@ -17,8 +17,8 @@ Understanding Spark 2 one step at a time
 
 ## Projects
 
-1. [Databricks Spark Training](projects/databricks)
-2. [Udemy Spark for Big Data](projects/udemy)
+* [Databricks Spark Training](projects/databricks)
+* [Udemy Spark for Big Data](projects/udemy)
 
 
 ## Resources
