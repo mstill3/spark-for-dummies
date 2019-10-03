@@ -23,7 +23,7 @@ Setup spark by running:
 
 Install python3:   
 
-    sudo apt install pip3-python
+    sudo apt install python3 python3-pip
 
 
 Install python3 libs:   
