@@ -4,9 +4,6 @@ Introduction to Spark architecture as well as the core, streaming, and machine l
 <table>
     <tr>
         <td>
-            <img src="https://spark.apache.org/images/spark-logo-trademark.png" alt="spark" width="200">
-        </td>
-        <td>
             <img src="https://databricks.com/wp-content/themes/databricks/assets/images/header_logo_2x.png" alt="databricks" width="200">
         </td>
         <td>
