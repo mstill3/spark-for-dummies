@@ -1,4 +1,4 @@
-# Databricks Apache Spark Overview
+# Spark and Python for Big Data with PySpark
 Introduction to Spark architecture as well as the core, streaming, and machine learning APIs
 
 <table>
