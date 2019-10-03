@@ -12,7 +12,7 @@ Introduction to Spark architecture as well as the core, streaming, and machine l
     </tr>
 </table>
 
-[Back to Main Page](../../)
+[Back to Main Page](../../README.md)
 
 ## Installation
 
