@@ -15,6 +15,8 @@ Introduction to Spark architecture as well as the core, streaming, and machine l
     </tr>
 </table>
 
+[Back to Main Page](../..)
+
 ## Launching
 
 1. Create an account [here](https://community.cloud.databricks.com)
