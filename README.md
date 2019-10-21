@@ -19,6 +19,8 @@ Understanding Spark 2 one step at a time
 * [Databricks Course](https://databricks.com/training/instructor-led-training/courses/apache-spark-overview)
 * [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark)
 * [Spark Examples](https://spark.apache.org/examples.html)
+* [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html)
+* []()
 
 ## Installation
 
