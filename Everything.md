@@ -1,8 +1,23 @@
 # PySpark 2.x Notes
 
 ## Transformations vs Actions
-Narrow transformation – In Narrow transformation, all the elements that are required to compute the records in single partition live in the single partition of parent RDD. A limited subset of partition is used to calculate the result. Narrow transformations are the result of map(), filter().  
-Wide transformation – In wide transformation, all the elements that are required to compute the records in the single partition may live in many partitions of parent RDD. The partition may live in many partitions of parent RDD. Wide transformations are the result of groupbyKey() and reducebyKey().    
+
+
+Narrow transformations are the result of map, filter and such that is from the data from a single partition only, i.e. it is self-sustained.
+
+An output RDD has partitions with records that originate from a single partition in the parent RDD. Only a limited subset of partitions used to calculate the result.
+
+Spark groups narrow transformations as a stage which is called pipelining.
+
+
+Wide transformations are the result of groupByKey and reduceByKey. The data required to compute the records in a single partition may reside in many partitions of the parent RDD.
+Note
+	Wide transformations are also called shuffle transformations as they may or may not depend on a shuffle.
+
+All of the tuples with the same key must end up in the same partition, processed by the same task. To satisfy these operations, Spark must execute RDD shuffle, which transfers data across cluster and results in a new stage with a new set of partitions.
+
+
+Optimzations done in the action, for improving the plan for all the transformations
 
 
 #### Other
@@ -23,13 +38,14 @@ Wide transformation – In wide transformation, all the elements that are requir
   * intersection
   * groupBy
   * groupByKey
+  * aggregateBy
   * distinct
   * reduceByKey
   * join
   * cartesian
   * partitionBy
-  * repartition
-  * coalesce
+  * repartition - increase or decrease num partitions (unbalnaced partitions)
+  * coalesce - reduces number of shuffles (balances data on partitions)
     
 #### Actions
   * count
