@@ -22,6 +22,7 @@ Optimzations done in the action, for improving the plan for all the transformati
 
 #### Other
   * printSchema
+  * cache
 
 #### Narrow Transformations
   * map
