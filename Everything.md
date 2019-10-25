@@ -34,6 +34,8 @@ Optimzations done in the action, for improving the plan for all the transformati
   * sample
   * union
   * zip
+  * coalesce - reduces number of shuffles (balances data on partitions) (shuffle flag disabled by default)
+
     
 #### Wide Transformations
   * intersection
@@ -46,7 +48,6 @@ Optimzations done in the action, for improving the plan for all the transformati
   * cartesian
   * partitionBy
   * repartition - increase or decrease num partitions (unbalnaced partitions)
-  * coalesce - reduces number of shuffles (balances data on partitions)
     
 #### Actions
   * count
