@@ -1,7 +1,7 @@
 # Spark 2 Notes
 
 #### Table of Contents
-- [Transformations vs Actions vs Commands](#Transformations%20vs%20Actions)
+- [Transformations vs Actions vs Commands](##Transformations%20vs%20Actions)
 - [Coalesce vs Partition](#Coalesce%20vs%20Partition)
 - [Cache vs Persist](#Cache%20vs%20Persist)
 - [Distinct vs DropDuplicates](#Distinct%20vs%20DropDuplicates)
