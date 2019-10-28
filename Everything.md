@@ -22,18 +22,20 @@
 
 - Optimzations done in the action, for improving the plan for all the transformations
 
+#### Examples
+
 <details>
-  <summary> Command examples </summary>
+  <summary> Commands </summary>
 
   * printSchema
-  * cache - these 3 mark the dataframe to be remembered and are lazily evaulated
+  * cache
   * persist
   * unpersist
 
 </details>
 
 <details>
-  <summary> Action examples </summary>
+  <summary> Actions </summary>
  
   * count
   * take
@@ -56,7 +58,7 @@
 </details>
 
 <details>
-  <summary> Narrow Transformation examples </summary>
+  <summary> Narrow Transformations </summary>
  
   * map
   * flatMap
@@ -75,7 +77,7 @@
 </details>
 
 <details>
-  <summary> Wide Transformation examples </summary>
+  <summary> Wide Transformations </summary>
  
   * intersection
   * groupBy
@@ -137,6 +139,7 @@
 - Tungsten is a Spark SQL component that provides increased performance by rewriting Spark operations in bytecode, at runtime. Tungsten suppresses virtual functions and leverages close to bare metal performance by focusing on jobs CPU and memory efficiency
 - Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
+- cache, persist and unpersist are all lazily evaluated
 
 
 
