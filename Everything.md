@@ -144,7 +144,7 @@
 - `cache()`, `persist(level)` and `unpersist()` are all lazily evaluated
 - baseRDD is the initial RDD of the read-in data 
 - Catalyst optimizer with rewrite your transfomations for you, so if you say `drop(colA)` and then try to `withColumnRenamed(colA, colB)` it will not throw an error it will just ignore both of these lines. However if try comparing equality of a dropped col then it will thow an error because it is trying to accesss the nonexistant values of it
-- In Spark SQL, it works as an expression to specifiy `WHERE AGE == 10` and `WHERE AGE == '10'`
+- In Spark SQL, it works correctly and the same to specifiy `WHERE AGE == 10` and `WHERE AGE == '10'`
 
 
 
