@@ -1,5 +1,5 @@
 # Spark for Dummies
-Understanding Spark 2 one transformation at a time
+Understanding Spark 2 one step at a time
 
 <table>
     <tr>
@@ -25,8 +25,3 @@ Understanding Spark 2 one transformation at a time
 9. Then follow the databricks instructions I put in [here](./projects/databricks)
 10. Take the [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html)
 11. Read over [my notes](./Everything.md)
-
-## Resources
-* [Spark Site](https://spark.apache.org/)
-* [Databricks Course](https://databricks.com/training/instructor-led-training/courses/apache-spark-overview)
-* [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark)
