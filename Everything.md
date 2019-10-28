@@ -4,6 +4,11 @@
 - [Transformations vs Actions vs Commands](#Transformations%20vs%20Actions)
 - [Coalesce vs Partition](#Coalesce%20vs%20Partition)
 - [Cache vs Persist](#Cache%20vs%20Persist)
+- [Distinct vs DropDuplicates](#Distinct%20vs%20DropDuplicates)
+- [Printing RDD elements](#Printing%20RDD%20elements)
+- [Shared Variables](#Shared%20Variables)
+- [Important Notes](#Important%20Notes)
+
 
 ## Transformations vs Actions
 
@@ -81,7 +86,7 @@
 ## Distinct vs DropDuplicates
 - The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
-## Printing elements of an RDD
+## Printing RDD elements
 - Another common idiom is attempting to print out the elements of an RDD using rdd.foreach(println) or rdd.map(println). On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the collect() method to first bring the RDD to the driver node thus: rdd.collect().foreach(println). This can cause the driver to run out of memory, though, because collect() fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is to use the take(): rdd.take(100).foreach(println).
 
 ## Shared Variables
