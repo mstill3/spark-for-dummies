@@ -1,4 +1,4 @@
-# My Spark 2 Notes
+# Spark 2 Notes
 
 ## Transformations vs Actions
 <details>
