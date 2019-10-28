@@ -97,6 +97,8 @@
 
 - Wide transformations are the result of `groupByKey()` and `reduceByKey()`. The data required to compute the records in a single partition may reside in many partitions of the parent RDD. Wide transformations are also called shuffle transformations as they may or may not depend on a shuffle. All of the tuples with the same key must end up in the same partition, processed by the same task. To satisfy these operations, Spark must execute RDD shuffle, which transfers data across cluster and results in a new stage with a new set of partitions.
 
+- `read` is not an action, however if the `inferSchema` option is set then it acts as one
+
 - Optimzations done in the action, for improving the plan for all the transformations
   
 ### Coalesce vs Partition
