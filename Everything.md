@@ -10,7 +10,7 @@
 - [Important Notes](#Important%20Notes)
 
 
-## Transformations vs Actions
+### Transformations vs Actions
 
 - Narrow transformations are the result of map, filter and such that is from the data from a single partition only, i.e. it is self-sustained. An output RDD has partitions with records that originate from a single partition in the parent RDD. Only a limited subset of partitions used to calculate the result. Spark groups narrow transformations as a stage which is called pipelining.
 
@@ -55,6 +55,7 @@
       * sample
       * union
       * zip
+      * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
     - Wide
       * intersection
       * groupBy
@@ -71,36 +72,35 @@
       * cogroup
       * cartesian
       * partitionBy
-      * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
       * repartition - increase or decrease num partitions (unbalnaced partitions)
   
-## Coalesce vs Partition
+### Coalesce vs Partition
 - coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles
 - repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. 
   
-## Cache vs Persist
+### Cache vs Persist
 - persist can save the dataframe data to any data source DISK_ONLY, MEMEORY_ONLY, ...
 - cache just calls the persist function with choosing the datasource to be MEMORY_ONLY
 - unpersist is a method but there is no uncache function, unpersist will do that (also will auto uncache if not used for a while)
 
-## Distinct vs DropDuplicates
+### Distinct vs DropDuplicates
 - The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
-## Printing RDD elements
+### Printing RDD elements
 - Another common idiom is attempting to print out the elements of an RDD using rdd.foreach(println) or rdd.map(println). On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the collect() method to first bring the RDD to the driver node thus: rdd.collect().foreach(println). This can cause the driver to run out of memory, though, because collect() fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is to use the take(): rdd.take(100).foreach(println).
 
-## Shared Variables
+### Shared Variables
 - Accumulators
   -
 - Broadcast Variables
   -
 
-## Important Notes
+### Important Notes
 - MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. THIS IS THE DEFAULT LEVEL
 -  In Python, stored objects will always be serialized with the Pickle library, so it does not matter whether you choose a serialized level. The available storage levels in Python include MEMORY_ONLY, MEMORY_ONLY_2, MEMORY_AND_DISK, MEMORY_AND_DISK_2, DISK_ONLY, and DISK_ONLY_2
 - Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it
 
-## Others
+### Others
 - Graph frame bfs inexpression Params
 - Problem with accumlators
 - How many tasks should u have in relation to num cores? Equal or multiple  
