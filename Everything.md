@@ -22,9 +22,8 @@
 
 - Optimzations done in the action, for improving the plan for all the transformations
 
-#### Commands
 <details>
-  <summary> Click to expand </summary>
+  <summary> Command examples </summary>
 
   * printSchema
   * cache - these 3 mark the dataframe to be remembered and are lazily evaulated
@@ -33,9 +32,8 @@
 
 </details>
 
-#### Actions
 <details>
-  <summary> Click to expand </summary>
+  <summary> Action examples </summary>
  
   * count
   * take
@@ -57,9 +55,8 @@
 
 </details>
 
-#### Narrow Transformations
 <details>
-  <summary> Click to expand </summary>
+  <summary> Narrow Transformation examples </summary>
  
   * map
   * flatMap
@@ -77,9 +74,8 @@
 
 </details>
 
-#### Wide Transformations
 <details>
-  <summary> Click to expand </summary>
+  <summary> Wide Transformation examples </summary>
  
   * intersection
   * groupBy
