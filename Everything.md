@@ -10,7 +10,7 @@
 - [Important Notes](#Important%20Notes)
 
 
-## Transformations vs Actions
+### Transformations vs Actions
 
 - Actions return a value back to the driver program
 
