@@ -1,6 +1,5 @@
-# Spark and Python for Big Data with PySpark
-Introduction to Spark APIs from this [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark) and some of my own
-
+# PySpark with jupyter notebook
+Introduction to Spark APIs
 
 <table>
     <tr>
@@ -38,4 +37,3 @@ To launch run:
 ```bash
 jupyter notebook
 ```
-
