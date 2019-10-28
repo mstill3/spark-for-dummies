@@ -143,6 +143,7 @@
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
 - `cache()`, `persist(level)` and `unpersist()` are all lazily evaluated
 - baseRDD is the initial RDD of the read-in data 
+- Catalyst optimizer with rewrite your transfomations for you, so if you say `drop(colA)` and then try to `withColumnRenamed(colA, colB)` it will not throw an error it will just ignore both of these lines. However if try comparing equality of a dropped col then it will thow an error because it is trying to accesss the nonexistant values of it
 
 
 
@@ -151,7 +152,6 @@
 - Problem with accumlators. Accumulators optimized
 - How many tasks should u have in relation to num cores? Equal or multiple  
 - Practice with Integer comparison SQL query 
-- Set shuffle partitions
 - Scala akka
 - Spark heap as much memory as mapreduce?
 - How create new reader? Add spark module?
@@ -161,7 +161,6 @@
 - Error with too many partitions
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - Split explode
-- Rename column compare
 - When does read triggered in code? Actions
 - When triggered accumulators
 - Reader format with output mode and format
