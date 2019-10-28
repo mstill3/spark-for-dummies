@@ -14,6 +14,8 @@
   - Commands
     * printSchema
     * cache
+    * persist
+    * unpersist
   - Actions
     * count
     * take
