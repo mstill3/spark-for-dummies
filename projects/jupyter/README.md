@@ -4,10 +4,10 @@ Introduction to Spark APIs
 <table>
     <tr>
         <td>
-            <img src="https://databricks.com/wp-content/themes/databricks/assets/images/header_logo_2x.png" alt="databricks" width="200">
+            <img src="https://miro.medium.com/max/1200/1*nPcdyVwgcuEZiEZiRqApug.jpeg" alt="pyspark" width="200">
         </td>
         <td>
-            <img src="https://databricks.com/wp-content/uploads/2018/03/db-academy-rgb-1200px.png" alt="databricks acedemy" width="200"/>
+            <img src="https://i2.wp.com/softwareengineeringdaily.com/wp-content/uploads/2018/07/jupyter-logo-featured-image.png?fit=600%2C315&ssl=1" alt="jupyter" width="200"/>
         </td>
     </tr>
 </table>
