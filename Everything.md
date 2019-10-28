@@ -102,7 +102,7 @@
   - Accumulators do not change the lazy evaluation model of Spark. If they are being updated within an operation on an RDD, their value is only updated once that RDD is computed as part of an action. Consequently, accumulator updates are not guaranteed to be executed when made within a lazy transformation like map()
 #### Broadcast Variables
   - Reference passed to data instead of data itself
-  - Marks the dataframe to be broadcasted (readonly only cached)
+  - Adds a hint/marks the dataframe to be broadcasted (readonly only cached)
   - The broadcast keyword allows to mark a DataFrame that is SMALL enough to be used in broadcast joins.
   - Broadcast join large data with small data
   - Spark will attempt to auto broadcast join during any join operation. The default auto broadcast threshold is 10M 
