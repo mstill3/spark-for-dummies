@@ -22,12 +22,12 @@
 
 - Optimzations done in the action, for improving the plan for all the transformations
 
-- Commands
+#### Commands
   * printSchema
   * cache
   * persist
   * unpersist
-- Actions
+#### Actions
   * count
   * take
   * top
@@ -44,7 +44,7 @@
   * stdev
   * countByKey
   * saveAsTextFile
-- Narrow Transformations
+#### Narrow Transformations
   * map
   * flatMap
   * select
@@ -58,7 +58,7 @@
   * union
   * zip
   * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
-- Wide Transformations
+#### Wide Transformations
   * intersection
   * groupBy
   * sortBy
