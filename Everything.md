@@ -24,13 +24,14 @@
 
 #### Commands
   * printSchema
-  * cache
+  * cache - these 3 mark the dataframe to be remembered and are lazily evaulated
   * persist
   * unpersist
 #### Actions
   * count
   * take
   * top
+  * first
   * countByValue
   * show
   * reduce
@@ -93,14 +94,31 @@
 
 ### Shared Variables
 - Accumulators
+  - Accumulators provide a shared, mutable variable that a Spark cluster can safely update on a per-row basis. 
   - Can only increase
+  - The Spark UI current only displays all named accumulators used by your application
+  - Programmers can also create their own types of Accumulators by subclassing AccumulatorParam
+  - For accumulator updates performed inside actions only, Spark guarantees that each task’s update to the accumulator will only be applied once, i.e. restarted tasks will not update the value. In transformations, users should be aware of that each task’s update may be applied more than once if tasks or job stages are re-executed.
+  - Accumulators do not change the lazy evaluation model of Spark. If they are being updated within an operation on an RDD, their value is only updated once that RDD is computed as part of an action. Consequently, accumulator updates are not guaranteed to be executed when made within a lazy transformation like map()
 - Broadcast Variables
   - Reference passed to data instead of data itself
+  - Marks the dataframe to be broadcasted (readonly only cached)
+  - The broadcast keyword allows to mark a DataFrame that is SMALL enough to be used in broadcast joins.
+
+Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
 
 ### Important Notes
 - MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. THIS IS THE DEFAULT LEVEL
 -  In Python, stored objects will always be serialized with the Pickle library, so it does not matter whether you choose a serialized level. The available storage levels in Python include MEMORY_ONLY, MEMORY_ONLY_2, MEMORY_AND_DISK, MEMORY_AND_DISK_2, DISK_ONLY, and DISK_ONLY_2
 - Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it
+-  Using Structured Streaming, the file sink type is idempotent and can provide end-to-end EXACTLY-ONLY semantics in a Structured Streaming job. Kafka and foreach sinks are fault tolerant >= 1,  memory and console are not fault tolerant
+- Using replayable sources and idempotent sinks, Structured Streaming can ensure end-to-end exactly-once semantics under any failure
+- Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it.
+- Tungsten is a Spark SQL component that provides increased performance by rewriting Spark operations in bytecode, at runtime. Tungsten suppresses virtual functions and leverages close to bare metal performance by focusing on jobs CPU and memory efficiency
+- Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
+- Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
+
+
 
 ### Others
 - Graph frame bfs inexpression Params
