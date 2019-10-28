@@ -58,6 +58,11 @@
     
 </details>
   
+## Cache vs Persist
+- persist can save the dataframe data to any data source DISK, MEMEORY, ...
+- cache just calls the persist function with choosing the datasource to be MEMEORY
+- unpersist is a method but there is no uncache function
+
 ## Others
 - Graph frame bfs inexpression Params
 - Problem with accumlators
