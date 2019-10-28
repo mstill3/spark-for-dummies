@@ -23,11 +23,20 @@
 - Optimzations done in the action, for improving the plan for all the transformations
 
 #### Commands
+<details>
+  <summary> Click to expand </summary>
+
   * printSchema
   * cache - these 3 mark the dataframe to be remembered and are lazily evaulated
   * persist
   * unpersist
+
+</details>
+
 #### Actions
+<details>
+  <summary> Click to expand </summary>
+ 
   * count
   * take
   * top
@@ -45,7 +54,13 @@
   * stdev
   * countByKey
   * saveAsTextFile
+
+</details>
+
 #### Narrow Transformations
+<details>
+  <summary> Click to expand </summary>
+ 
   * map
   * flatMap
   * select
@@ -59,7 +74,13 @@
   * union
   * zip
   * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
+
+</details>
+
 #### Wide Transformations
+<details>
+  <summary> Click to expand </summary>
+ 
   * intersection
   * groupBy
   * sortBy
@@ -76,6 +97,8 @@
   * cartesian
   * partitionBy
   * repartition - increase or decrease num partitions (unbalnaced partitions)
+  
+</details>
   
 ### Coalesce vs Partition
 - coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles
