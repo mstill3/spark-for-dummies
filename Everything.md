@@ -24,23 +24,23 @@
     * show
     * reduce
     * fold
-    * agg
     * foreach
     * getNumPartitions
     * collect
-    * aggregate
     * max
     * sum
     * mean
     * stdev
     * countByKey
     * saveAsTextFile
-  - Transformations (limit, drop, dropDuplicates)
-    - Narrow
+  - Transformations
+    - Narrow (results of select and filter, single partition)
       * map
       * flatMap
       * select
+      * drop
       * filter
+      * limit
       * mapPartition
       * mapPartitionsWithIndex
       * keyBy
@@ -53,9 +53,12 @@
       * groupBy
       * sortBy
       * orderBy
-      * groupByKey
+      * groupByKey    
+      * aggregate
       * aggregateBy
       * distinct
+      * dropDuplicates
+      * agg
       * reduceByKey
       * join
       * cartesian
@@ -65,9 +68,12 @@
 </details>
   
 ## Cache vs Persist
-- persist can save the dataframe data to any data source DISK, MEMEORY, ...
-- cache just calls the persist function with choosing the datasource to be MEMEORY
+- persist can save the dataframe data to any data source DISK_ONLY, MEMEORY_ONLY, ...
+- cache just calls the persist function with choosing the datasource to be MEMORY_ONLY
 - unpersist is a method but there is no uncache function, unpersist will do that
+
+## Distinct vs DropDuplicates
+- The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
 ## Others
 - Graph frame bfs inexpression Params
