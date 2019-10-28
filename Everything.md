@@ -142,6 +142,7 @@
 - Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
 - `cache()`, `persist(level)` and `unpersist()` are all lazily evaluated
+- baseRDD is the initial RDD of the read-in data 
 
 
 
@@ -154,13 +155,11 @@
 - Scala akka
 - Spark heap as much memory as mapreduce?
 - How create new reader? Add spark module?
-- BaseRDD?
 - Pipeline featurizer bottleneck
 - Reduce by key bottleneck
 - Pulling values form tuple
 - Error with too many partitions
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
-- How to change partitions
 - Split explode
 - Rename column compare
 - When does read triggered in code? Actions
