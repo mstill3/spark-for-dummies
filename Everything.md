@@ -10,9 +10,7 @@
 - [Important Notes](#Important%20Notes)
 
 
-### Transformations vs Actions
-
-#### Examples
+### Method Categories
 
 <details>
   <summary> Commands </summary>
@@ -87,6 +85,8 @@
   * repartition - increase or decrease num partitions (unbalnaced partitions)
   
 </details>
+
+### Transformations vs Actions
 
 - Actions return a value back to the driver program
 
