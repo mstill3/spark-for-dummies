@@ -1,5 +1,5 @@
 # Databricks Apache Spark Overview
-Introduction to Spark architecture as well as the core, streaming, and machine learning APIs
+Introduction to Spark architecture as well as the core, streaming, and machine learning APIs from this  [Databricks Course](https://databricks.com/training/instructor-led-training/courses/apache-spark-overview)
 
 <table>
     <tr>
