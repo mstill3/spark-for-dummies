@@ -18,20 +18,24 @@ Introduction to Spark architecture as well as the core, streaming, and machine l
 ## Installation
 
 Setup spark by running:
-
-`bin/installSpark.sh`
+```bash
+bin/installSpark.sh
+```
 
 Install python3:
-
-`sudo apt install python3 python3-pip`
+```bash
+sudo apt install python3 python3-pip
+```
 
 Install python3 libs:
-
-`pip3 install jupyter py4j pyspark`
+```
+pip3 install jupyter py4j pyspark
+```
 
 ## Launching
 
 To launch run:
-
-`jupyter notebook`
+```bash
+jupyter notebook
+```
 
