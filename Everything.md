@@ -145,7 +145,9 @@
 - baseRDD is the initial RDD of the read-in data 
 - Catalyst optimizer with rewrite your transfomations for you, so if you say `drop(colA)` and then try to `withColumnRenamed(colA, colB)` it will not throw an error it will just ignore both of these lines. However if try comparing equality of a dropped col then it will thow an error because it is trying to accesss the nonexistant values of it
 - In Spark SQL, it works correctly and the same to specifiy `WHERE AGE == 10` and `WHERE AGE == '10'`
-
+- When accessing elements from a tuple tup[0] is the corresponding data element in col 1 and tup[1] would be for the data element in col 2  
+- `split(col('text'), "")` Splits the sentence into letters array. So `split(“”)[0]` is the first letter
+- `explode()` takes an array and seperates each element onto a new row
 
 
 ### Others
@@ -157,14 +159,10 @@
 - How create new reader? Add spark module?
 - Pipeline featurizer bottleneck
 - Reduce by key bottleneck
-- Pulling values from tuple
 - Error with too many partitions
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
-- Split explode
-- When does read triggered in code? Actions
 - When triggered accumulators
 - Reader format with output mode and format
 - Correct window parameters
 - How to change value of an rdd
 - Dictionary mode pull df value is bad for large data 
-- Split(“”)[0] first letter or word?
