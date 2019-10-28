@@ -104,8 +104,9 @@
   - Reference passed to data instead of data itself
   - Marks the dataframe to be broadcasted (readonly only cached)
   - The broadcast keyword allows to mark a DataFrame that is SMALL enough to be used in broadcast joins.
-
-Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
+  - Broadcast join large data with small data
+  - Spark will attempt to auto broadcast join during any join operation. The default auto broadcast threshold is 10M 
+  - Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
 
 ### Important Notes
 - MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. THIS IS THE DEFAULT LEVEL
