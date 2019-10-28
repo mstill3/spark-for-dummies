@@ -135,7 +135,6 @@
 - Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it
 -  Using Structured Streaming, the file sink type is idempotent and can provide end-to-end EXACTLY-ONLY semantics in a Structured Streaming job. Kafka and foreach sinks are fault tolerant >= 1,  memory and console are not fault tolerant
 - Using replayable sources and idempotent sinks, Structured Streaming can ensure end-to-end exactly-once semantics under any failure
-- Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it.
 - Tungsten is a Spark SQL component that provides increased performance by rewriting Spark operations in bytecode, at runtime. Tungsten suppresses virtual functions and leverages close to bare metal performance by focusing on jobs CPU and memory efficiency
 - Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
