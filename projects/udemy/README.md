@@ -1,5 +1,6 @@
 # Spark and Python for Big Data with PySpark
-Introduction to Spark architecture as well as the core, streaming, and machine learning APIs
+Introduction to Spark architecture as well as the core, streaming, and machine learning APIs from this [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark)
+
 
 <table>
     <tr>
@@ -13,26 +14,3 @@ Introduction to Spark architecture as well as the core, streaming, and machine l
 </table>
 
 [Back to Main Page](../../README.md)
-
-## Installation
-
-Setup spark by running:   
-
-    bin/installSpark.sh
-
-
-Install python3:   
-
-    sudo apt install python3 python3-pip
-
-
-Install python3 libs:   
-
-    pip3 install jupyter py4j
-    
-
-## Launching
-
-To launch run:
-
-    jupyter notebook
