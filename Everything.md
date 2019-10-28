@@ -15,8 +15,8 @@
 <details>
   <summary> Commands </summary>
 
-  * printSchema
-  * cache
+  * __printSchema__
+  * __cache__
   * persist
   * unpersist
 
@@ -60,7 +60,7 @@
   * sample
   * union
   * zip
-  * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
+  * __coalesce__
 
 </details>
 
@@ -82,7 +82,7 @@
   * cogroup
   * cartesian
   * partitionBy
-  * repartition - increase or decrease num partitions (unbalnaced partitions)
+  * __repartition__
   
 </details>
 
@@ -99,13 +99,13 @@
 - Optimzations done in the action, for improving the plan for all the transformations
   
 ### Coalesce vs Partition
-- coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles
-- repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. 
+- coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. __`coalesce` only can reduce num partitions__ (DOES __NOT__ balance data on partitions) (shuffle flag disabled by default)
+- repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. __`repartion()` can increase or decrease num partitions__ (balanced partitions)
   
 ### Cache vs Persist
 - persist can save the dataframe data to any data source DISK_ONLY, MEMEORY_ONLY, ...
 - cache just calls the persist function with choosing the datasource to be MEMORY_ONLY
-- unpersist is a method but there is no uncache function, unpersist will do that (also will auto uncache if not used for a while)
+- unpersist is a method but __there is no `uncache()` function__, unpersist will do that (also will auto uncache if not used for a while)
 
 ### Distinct vs DropDuplicates
 - The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
@@ -125,12 +125,12 @@
   - Reference passed to data instead of data itself
   - Adds a hint/marks the dataframe to be broadcasted (readonly only cached)
   - The broadcast keyword allows to mark a DataFrame that is SMALL enough to be used in broadcast joins.
-  - Broadcast join large data with small data
+  - __Broadcast join large data with small data__
   - Spark will attempt to auto broadcast join during any join operation. The default auto broadcast threshold is 10M 
   - Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
 
 ### Important Notes
-- MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. THIS IS THE DEFAULT LEVEL
+- MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. __This is the default persistance level__
 -  In Python, stored objects will always be serialized with the Pickle library, so it does not matter whether you choose a serialized level. The available storage levels in Python include MEMORY_ONLY, MEMORY_ONLY_2, MEMORY_AND_DISK, MEMORY_AND_DISK_2, DISK_ONLY, and DISK_ONLY_2
 - Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it
 -  Using Structured Streaming, the file sink type is idempotent and can provide end-to-end EXACTLY-ONLY semantics in a Structured Streaming job. Kafka and foreach sinks are fault tolerant >= 1,  memory and console are not fault tolerant
