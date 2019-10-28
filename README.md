@@ -25,6 +25,9 @@ Understanding Spark 2 one transformation at a time
 
 ## Installation
 
+<details>
+  <summary> Click to expand </summary>
+    
 Setup spark by running:   
 
     bin/installSpark.sh
@@ -38,6 +41,8 @@ Install python3:
 Install python3 libs:   
 
     pip3 install jupyter py4j
+
+</details>
 
 ## Projects
 
