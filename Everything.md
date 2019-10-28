@@ -93,14 +93,14 @@
 - Another common idiom is attempting to print out the elements of an RDD using rdd.foreach(println) or rdd.map(println). On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the collect() method to first bring the RDD to the driver node thus: rdd.collect().foreach(println). This can cause the driver to run out of memory, though, because collect() fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is to use the take(): rdd.take(100).foreach(println).
 
 ### Shared Variables
-- Accumulators
+#### Accumulators
   - Accumulators provide a shared, mutable variable that a Spark cluster can safely update on a per-row basis. 
   - Can only increase
   - The Spark UI current only displays all named accumulators used by your application
   - Programmers can also create their own types of Accumulators by subclassing AccumulatorParam
   - For accumulator updates performed inside actions only, Spark guarantees that each task’s update to the accumulator will only be applied once, i.e. restarted tasks will not update the value. In transformations, users should be aware of that each task’s update may be applied more than once if tasks or job stages are re-executed.
   - Accumulators do not change the lazy evaluation model of Spark. If they are being updated within an operation on an RDD, their value is only updated once that RDD is computed as part of an action. Consequently, accumulator updates are not guaranteed to be executed when made within a lazy transformation like map()
-- Broadcast Variables
+#### Broadcast Variables
   - Reference passed to data instead of data itself
   - Marks the dataframe to be broadcasted (readonly only cached)
   - The broadcast keyword allows to mark a DataFrame that is SMALL enough to be used in broadcast joins.
