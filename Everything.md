@@ -1,8 +1,11 @@
 # Spark 2 Notes
 
+#### Table of Contents
+- [Transformations vs Actions vs Commands](#Transformations%20vs%20Actions)
+- [Coalesce vs Partition](#Coalesce%20vs%20Partition)
+- [Cache vs Persist](#Cache%20vs%20Persist)
+
 ## Transformations vs Actions
-<details>
-  <summary> Click to expand </summary>
 
 - Narrow transformations are the result of map, filter and such that is from the data from a single partition only, i.e. it is self-sustained. An output RDD has partitions with records that originate from a single partition in the parent RDD. Only a limited subset of partitions used to calculate the result. Spark groups narrow transformations as a stage which is called pipelining.
 
@@ -65,8 +68,6 @@
       * partitionBy
       * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
       * repartition - increase or decrease num partitions (unbalnaced partitions)
-    
-</details>
   
 ## Coalesce vs Partition
 - coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles
