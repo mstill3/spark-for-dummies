@@ -19,9 +19,7 @@ Understanding Spark 2 one step at a time
 3. Read this official [Spark Quick Start Guide](https://spark.apache.org/docs/latest/quick-start.html)
 4. Also read the RDD and SQL guides that are linked from the quick start page
 5. Read and try to understand these [Spark Examples](https://spark.apache.org/examples.html)
-6. Install Spark 2 by following the installation instructions [here](./Install.md)
-7. Follow the jupyter notebooks I have put [here](./projects)
-8. Also open up the notebook files in the `mine` directory and `udemy` directory
-9. Then follow the databricks instructions I put in [here](./projects/databricks)
-10. Take the [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html)
-11. Read over [my notes](./Everything.md)
+6. Install Spark 2 and follow the directions listed [here](./projects/jupyter/README.md)
+7. Follow the databricks instructions I put in [here](./projects/databricks)
+8. Take the [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html)
+9. Read over [my notes](./Everything.md)
