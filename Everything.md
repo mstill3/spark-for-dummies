@@ -144,29 +144,26 @@
 
 ### Others
 - Graph frame bfs inexpression Params
-- Problem with accumlators
+- Problem with accumlators. Accumulators optimized
 - How many tasks should u have in relation to num cores? Equal or multiple  
 - Practice with Integer comparison SQL query 
 - Set shuffle partitions
 - Scala akka
-- Spark heap 2 as much men as mapreduce
+- Spark heap as much memory as mapreduce?
 - How create new reader? Add spark module?
-- Baserdd
+- BaseRDD?
 - Pipeline featurizer bottleneck
 - Reduce by key bottleneck
 - Pulling values form tuple
-- How to use broadcast join
 - Error with too many partitions
-- Ddfualt persistence mode 
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - How to change partitions
 - Split explode
 - Rename column compare
-- When does red triggered in code? Actions
+- When does read triggered in code? Actions
 - When triggered accumulators
 - Reader format with output mode and format
 - Correct window parameters
 - How to change value of an rdd
 - Dictionary mode pull df value is bad for large data 
 - Split(“”)[0] first letter or word?
-- Accumulators optimized
