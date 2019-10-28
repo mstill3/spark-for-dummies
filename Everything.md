@@ -1,7 +1,8 @@
 # PySpark 2.x Notes
 
 ## Transformations vs Actions
-
+<details>
+  <summary> Click to expand </summary>
 
 - Narrow transformations are the result of map, filter and such that is from the data from a single partition only, i.e. it is self-sustained. An output RDD has partitions with records that originate from a single partition in the parent RDD. Only a limited subset of partitions used to calculate the result. Spark groups narrow transformations as a stage which is called pipelining.
 
@@ -54,5 +55,7 @@
     * stdev
     * countByKey
     * saveAsTextFile
+    
+</details>
   
 
