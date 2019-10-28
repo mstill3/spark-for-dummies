@@ -99,13 +99,13 @@
 - Optimzations done in the action, for improving the plan for all the transformations
   
 ### Coalesce vs Partition
-- coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. __`coalesce` only can reduce num partitions__ (DOES __NOT__ balance data on partitions) (shuffle flag disabled by default)
-- repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. __`repartion()` can increase or decrease num partitions__ (balanced partitions)
+- coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. `coalesce` only can decrease num partitions (does NOT balance data on partitions) (shuffle flag disabled by default)
+- repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. `repartion()` can increase or decrease num partitions (balanced partitions)
   
 ### Cache vs Persist
 - persist can save the dataframe data to any data source DISK_ONLY, MEMEORY_ONLY, ...
 - cache just calls the persist function with choosing the datasource to be MEMORY_ONLY
-- unpersist is a method but __there is no `uncache()` function__, unpersist will do that (also will auto uncache if not used for a while)
+- unpersist is a method but there is no `uncache()` function, unpersist will do that (also will auto uncache if not used for a while)
 
 ### Distinct vs DropDuplicates
 - The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
