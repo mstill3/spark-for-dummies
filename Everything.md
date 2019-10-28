@@ -35,10 +35,11 @@
     * stdev
     * countByKey
     * saveAsTextFile
-  - Transformations (limit, select, drop, dropDuplicates)
+  - Transformations (limit, drop, dropDuplicates)
     - Narrow
       * map
       * flatMap
+      * select
       * filter
       * mapPartition
       * mapPartitionsWithIndex
@@ -50,6 +51,8 @@
     - Wide
       * intersection
       * groupBy
+      * sortBy
+      * orderBy
       * groupByKey
       * aggregateBy
       * distinct
