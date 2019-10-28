@@ -144,6 +144,7 @@
 - `cache()`, `persist(level)` and `unpersist()` are all lazily evaluated
 - baseRDD is the initial RDD of the read-in data 
 - Catalyst optimizer with rewrite your transfomations for you, so if you say `drop(colA)` and then try to `withColumnRenamed(colA, colB)` it will not throw an error it will just ignore both of these lines. However if try comparing equality of a dropped col then it will thow an error because it is trying to accesss the nonexistant values of it
+- In Spark SQL, it works as an expression to specifiy `WHERE AGE == 10` and `WHERE AGE == '10'`
 
 
 
@@ -151,13 +152,12 @@
 - Graph frame bfs inexpression Params
 - Problem with accumlators. Accumulators optimized
 - How many tasks should u have in relation to num cores? Equal or multiple  
-- Practice with Integer comparison SQL query 
 - Scala akka
 - Spark heap as much memory as mapreduce?
 - How create new reader? Add spark module?
 - Pipeline featurizer bottleneck
 - Reduce by key bottleneck
-- Pulling values form tuple
+- Pulling values from tuple
 - Error with too many partitions
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - Split explode
