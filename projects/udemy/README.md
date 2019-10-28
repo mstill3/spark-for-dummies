@@ -1,5 +1,5 @@
 # Spark and Python for Big Data with PySpark
-Introduction to Spark architecture as well as the core, streaming, and machine learning APIs from this [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark) and some of my own
+Introduction to Spark APIs from this [Udemy Spark Course](https://www.udemy.com/course/spark-and-python-for-big-data-with-pyspark) and some of my own
 
 
 <table>
