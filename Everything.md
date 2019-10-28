@@ -93,9 +93,9 @@
 
 ### Shared Variables
 - Accumulators
-  -
+  - Can only increase
 - Broadcast Variables
-  -
+  - Reference passed to data instead of data itself
 
 ### Important Notes
 - MEMORY_ONLY: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. THIS IS THE DEFAULT LEVEL
