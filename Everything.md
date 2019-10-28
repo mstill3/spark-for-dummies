@@ -1,4 +1,4 @@
-# PySpark 2.x Notes
+# My Spark 2 Notes
 
 ## Transformations vs Actions
 <details>
