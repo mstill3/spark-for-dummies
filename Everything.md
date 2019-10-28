@@ -11,31 +11,9 @@
 - Optimzations done in the action, for improving the plan for all the transformations
 
 - Examples
-  - Other
+  - Commands
     * printSchema
     * cache
-  - Narrow Transformations
-    * map
-    * flatMap
-    * filter
-    * mapPartition
-    * mapPartitionsWithIndex
-    * keyBy
-    * sample
-    * union
-    * zip
-    * coalesce - reduces number of shuffles (balances data on partitions) (shuffle flag disabled by default)
-  - Wide Transformations
-    * intersection
-    * groupBy
-    * groupByKey
-    * aggregateBy
-    * distinct
-    * reduceByKey
-    * join
-    * cartesian
-    * partitionBy
-    * repartition - increase or decrease num partitions (unbalnaced partitions)
   - Actions
     * count
     * take
@@ -55,13 +33,36 @@
     * stdev
     * countByKey
     * saveAsTextFile
+  - Transformations (limit, select, drop, dropDuplicates)
+    - Narrow
+      * map
+      * flatMap
+      * filter
+      * mapPartition
+      * mapPartitionsWithIndex
+      * keyBy
+      * sample
+      * union
+      * zip
+      * coalesce - reduces number of shuffles (balances data on partitions) (shuffle flag disabled by default)
+    - Wide
+      * intersection
+      * groupBy
+      * groupByKey
+      * aggregateBy
+      * distinct
+      * reduceByKey
+      * join
+      * cartesian
+      * partitionBy
+      * repartition - increase or decrease num partitions (unbalnaced partitions)
     
 </details>
   
 ## Cache vs Persist
 - persist can save the dataframe data to any data source DISK, MEMEORY, ...
 - cache just calls the persist function with choosing the datasource to be MEMEORY
-- unpersist is a method but there is no uncache function
+- unpersist is a method but there is no uncache function, unpersist will do that
 
 ## Others
 - Graph frame bfs inexpression Params
