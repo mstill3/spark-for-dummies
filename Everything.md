@@ -97,7 +97,7 @@
 
 - Wide transformations are the result of `groupByKey()` and `reduceByKey()`. The data required to compute the records in a single partition may reside in many partitions of the parent RDD. Wide transformations are also called shuffle transformations as they may or may not depend on a shuffle. All of the tuples with the same key must end up in the same partition, processed by the same task. To satisfy these operations, Spark must execute RDD shuffle, which transfers data across cluster and results in a new stage with a new set of partitions.
 
-- `read` is not an action, however if the `inferSchema` option is set then it acts as one
+- `read()` is not an action, however if the `inferSchema` option is set then it acts as one
 
 - Optimzations done in the action, for improving the plan for all the transformations
   
@@ -141,7 +141,7 @@
 - Tungsten is a Spark SQL component that provides increased performance by rewriting Spark operations in bytecode, at runtime. Tungsten suppresses virtual functions and leverages close to bare metal performance by focusing on jobs CPU and memory efficiency
 - Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
-- cache, persist and unpersist are all lazily evaluated
+- `cache()`, `persist(level)` and `unpersist()` are all lazily evaluated
 
 
 
