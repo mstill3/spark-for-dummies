@@ -16,7 +16,7 @@
     * cache
     * persist
     * unpersist
-  - Actions
+  - Actions - return a value to the driver program
     * count
     * take
     * top
@@ -33,7 +33,7 @@
     * stdev
     * countByKey
     * saveAsTextFile
-  - Transformations
+  - Transformations - create a new dataset from an existing one
     - Narrow (results of select and filter, single partition)
       * map
       * flatMap
@@ -47,7 +47,6 @@
       * sample
       * union
       * zip
-      * coalesce - reduces number of shuffles (balances data on partitions) (shuffle flag disabled by default)
     - Wide
       * intersection
       * groupBy
@@ -63,9 +62,14 @@
       * join
       * cartesian
       * partitionBy
+      * coalesce - reduces number of shuffles (DOES NOT balance data on partitions) (shuffle flag disabled by default)
       * repartition - increase or decrease num partitions (unbalnaced partitions)
     
 </details>
+  
+## Coalesce vs Partition
+- coalesce(numPartitions): Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles
+- repartition(numPartitions):	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. 
   
 ## Cache vs Persist
 - persist can save the dataframe data to any data source DISK_ONLY, MEMEORY_ONLY, ...
@@ -74,6 +78,9 @@
 
 ## Distinct vs DropDuplicates
 - The main difference is the consideration of the subset of columns which is great! When using distinct you need a prior .select to select the columns on which you want to apply the duplication and the returned Dataframe contains only these selected columns while dropDuplicates(colNames) will return all the columns of the initial dataframe after removing duplicated rows as per the columns
+
+## Printing elements of an RDD
+- Another common idiom is attempting to print out the elements of an RDD using rdd.foreach(println) or rdd.map(println). On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the collect() method to first bring the RDD to the driver node thus: rdd.collect().foreach(println). This can cause the driver to run out of memory, though, because collect() fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is to use the take(): rdd.take(100).foreach(println).
 
 ## Others
 - Graph frame bfs inexpression Params
