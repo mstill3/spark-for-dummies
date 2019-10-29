@@ -40,10 +40,6 @@
   * foreach
   * getNumPartitions
   * collect
-  * max
-  * sum
-  * mean
-  * stdev
   * countByKey
   * saveAsTextFile
 
@@ -90,6 +86,21 @@
   
 </details>
 
+<details>
+  <summary> Relational Grouped Dataset Actions </summary>
+  
+  * avg
+  * count
+  * sum
+  * min
+  * max
+  * mean
+  * agg
+  * pivot
+  
+</details>
+
+
 
 ### Transformations_vs_Actions
 
@@ -132,15 +143,21 @@
 #### Distinct vs DropDuplicates
 - When using `distinct()` you need a prior `select(colNames)` to select the columns on which you want to apply the deduplication and the returned Dataframe contains only these selected columns. While `dropDuplicates(colNames)` will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
+### When vs Otherwise
+- `when()` is the if and `otherwise()` is the else
+- Example: `df.select(df.name, F.when(df.age > 3, 1).otherwise(0)).show()`
+
+#### First vs Head
+- `first()` will only return the first row
+- `head(n)` can return n top rows
+
 #### OrderBy vs Sort
 - Completely the same, aliases for one another
 - To sort by say 2 cols: `df.orderBy(desc("age"), "name").collect()`
 
-#### First vs Head
-- TODO
-
 #### Filter vs Where
-- TODO
+- Completely the same, aliases for one another
+- An example: `filteredDF = (sortedDescDF.filter( col("project") == "en"))`
 
 
 ### Printing_RDD_elements
