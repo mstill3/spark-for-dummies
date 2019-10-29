@@ -254,8 +254,35 @@
 
 
 ### Machine_Learning
-- TODO
+
 - Pipeline featurizer bottleneck?
+
+#### Basic statistics
+- summary statistics
+- correlations
+- stratified sampling
+- hypothesis testing
+- random data generation
+
+#### Classification and regression
+- linear models (SVMs, logistic regression, linear regression)
+- naive Bayes
+- decision trees
+- ensembles of trees (Random Forests and Gradient-Boosted Trees)
+
+#### Collaborative filtering
+- alternating least squares (ALS)
+
+#### Clustering
+- k-means
+
+#### Dimensionality reduction
+- singular value decomposition (SVD)
+- principal component analysis (PCA)
+
+#### Feature extraction and transformation Optimization (developer)
+- stochastic gradient descent
+- limited-memory BFGS (L-BFGS)
 
 
 ### Important_Notes
