@@ -2,7 +2,7 @@
 
 #### Table of Contents
 - [Method Categories](#Method_Categories)
-- [Transformations vs Actions vs Commands](#Transformations_vs_Actions)
+- [Transformations vs Actions](#Transformations_vs_Actions)
 - [Reading In Data](#Reading_In_Data)
 - [Coalesce vs Partition](#Coalesce_vs_Partition)
 - [Cache vs Persist](#Cache_vs_Persist)
