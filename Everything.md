@@ -4,6 +4,7 @@
 - [Method Categories](#Method_Categories)
 - [Transformations vs Actions](#Transformations_vs_Actions)
 - [Reading In Data](#Reading_In_Data)
+- [Writing Out Data](#Writing_Out_Data)
 - [Method Distinctions](#Method_Distinctions)
 - [Printing RDD elements](#Printing_RDD_elements)
 - [Shared Variables](#Shared_Variables)
@@ -114,7 +115,9 @@
 
 
 ### Reading_In_Data
-- TODO (params, output mode and format)
+- Works with jdbc, text, json, orc, parquet, csv, table
+- Format example: `spark.read.format('json').load('python/test_support/sql/people.json') `
+- `spark.read.*`
 
 #### CSV 
 - Slow inference speed
@@ -155,8 +158,23 @@
 - Has the potential to overwhelm the database.
 - Requires specification of a stride to properly balance partitions.
 
+### Data Stream
+- Works with jdbc, text, json, orc, parquet, csv, table
+- Example: `spark.readStream.format("text")`
+
 #### Custom
 - How create new reader? Add spark module?
+
+
+### Writing_Out_Data
+
+#### Streaming
+- forEach example: `sdf.writeStream.foreach(print_row)`
+- forEachBatch example: `sdf.writeStream.foreachBatch(func)`
+- option only has timezone
+- outputMode has append, complete, update. An example: `sdf.writeStream.outputMode('append')`
+- start exmaple: `sq = sdf.writeStream.trigger(processingTime='5 seconds').start(queryName='that_query', outputMode="append", format='memory')`
+- trigger(processingTime, once). processingTime is a string like '0 second' or '0 seconds' or '0 minute' or '0 minutes' and once is for 1 batch of data. An example: `writer = sdf.writeStream.trigger(processingTime='5 seconds')`
 
 
 ### Method_Distinctions
@@ -260,11 +278,10 @@
 - The number of partitions used in Spark is configurable and having too few (causing less concurrency, data skewing and improper resource utilization) or too many (causing task scheduling to take more time than actual execution time) partitions is not good
 - DataFrames do NOT have a `tail()` method
 - The number of tasks and number of partitions should be a __multiple__ of the number of cores
-
+- Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 
 ### Others
 - Scala akka
-- Spark heap as much memory as mapreduce?
 - Reduce by key bottleneck
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - When triggered accumulators
