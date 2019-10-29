@@ -9,6 +9,14 @@
 - [Shared Variables](#Shared%20Variables)
 - [Important Notes](#Important%20Notes)
 
+### Reading In Data
+- CSV 
+  - TODO (params, output mode and format)
+- Parquet
+  - TODO (params)
+- JSON
+  - TODO (params)
+- TODO
 
 ### Method Categories
 
@@ -113,6 +121,15 @@
 ### Distinct vs DropDuplicates
 - When using `distinct()` you need a prior `select(colNames)` to select the columns on which you want to apply the deduplication and the returned Dataframe contains only these selected columns. While `dropDuplicates(colNames)` will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
+### OrderBy vs Sort
+- TODO
+
+### First vs Head
+- TODO
+
+### Filter vs Where
+- TODO
+
 ### Printing RDD elements
 - Another common idiom is attempting to print out the elements of an RDD using `rdd.foreach(println)` or `rdd.map(println)`. On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the `collect()` method to first bring the RDD to the driver node thus: `rdd.collect().foreach(println)`. This can cause the driver to run out of memory, though, because `collect()` fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is like this: `rdd.take(100).foreach(println)`
 
@@ -132,13 +149,20 @@
   - Spark will attempt to auto broadcast join during any join operation. The default auto broadcast threshold is 10M 
   - Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
 
+### SQL
+- Convert df into a temporary table view: `myDF.createOrReplaceTempView("people")`
+- Then use SQL like `anotherDF = spark.sql("SELECT * FROM people")`
+
+### Windowing
+- TODO (params)
+
 ### Graphframes
   - Fully review this [notebook](https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)
   - `GraphFrame(verticesDF, edgesDF)` where verticesDF has `id` column and edgesDF has `src` and `dst` columns
-  - BFS `g.bfs("name = 'Esther'", "age < 32")` or `g.bfs(fromExpr = "name = 'Esther'", toExpr = "age < 32", edgeFilter = "relationship != 'friend'", maxPathLength = 3)`
+  - Breadth-first search `g.bfs("name = 'Esther'", "age < 32")` or `g.bfs(fromExpr = "name = 'Esther'", toExpr = "age < 32", edgeFilter = "relationship != 'friend'", maxPathLength = 3)`
   - `triangleCount()` is how many loop backs the node has to itself
   - `graphframe.degrees()` = df(sum(inDegrees + outDegrees))
-  - `pageRank(resetProbability=0.15, tol=0.01)`, `connectedComponents(maxIter)` and `stronglyConnectedComponents(maxIter)` are all values showing how the vertex is connected within the graph
+  - `pageRank(resetProbability=0.15, tol=0.01)`, `connectedComponents(maxIter)` (tolerance) and `stronglyConnectedComponents(maxIter)` are all values showing how the vertex is connected within the graph
   - `labelPropagation(maxIter)` assigns groupings of similarly connected vertices
   - Shortest Path algorithm `g.shortestPaths(landmarks=["a", "d"])`
   - Motif finding is a search given a set of generic vertices and their connections to other vertices `g.find("(a)-[e]->(b); (b)-[e2]->(a)")`
@@ -159,21 +183,21 @@
 - When accessing elements from a tuple tup[0] is the corresponding data element in col 1 and tup[1] would be for the data element in col 2  
 - `split(col('text'), "")` Splits the sentence into letters array. So `split(“”)[0]` is the first letter
 - `explode()` takes an array and seperates each element onto a new row
+- In the case of Python, the cleanest version is the `col("column-name")` variant as opposed to just specifying colName or `df[colName]`
+- The number of partitions used in Spark is configurable and having too few (causing less concurrency, data skewing and improper resource utilization) or too many (causing task scheduling to take more time than actual execution time) partitions is not good
 
 
 ### Others
-- 
-- Problem with accumlators. Accumulators optimized
+- Dictionary mode pull df value is bad for large data 
 - How many tasks should u have in relation to num cores? Equal or multiple  
+
+- Problem with accumlators. Accumulators optimized
 - Scala akka
 - Spark heap as much memory as mapreduce?
 - How create new reader? Add spark module?
 - Pipeline featurizer bottleneck
 - Reduce by key bottleneck
-- Error with too many partitions
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - When triggered accumulators
-- Reader format with output mode and format
-- Correct window parameters
 - How to change value of an rdd
-- Dictionary mode pull df value is bad for large data 
+- What does `tail()` do?
