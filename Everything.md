@@ -1,7 +1,7 @@
 # Spark 2 Notes
 
 #### Table of Contents
-- [Method Categories](#Method%20Categories)
+- [Method Categories](#Method_Categories)
 - [Transformations vs Actions vs Commands](#Transformations%20vs%20Actions)
 - [Reading In Data](#Reading%20In%20Data)
 - [Coalesce vs Partition](#Coalesce%20vs%20Partition)
