@@ -4,12 +4,7 @@
 - [Method Categories](#Method_Categories)
 - [Transformations vs Actions](#Transformations_vs_Actions)
 - [Reading In Data](#Reading_In_Data)
-- [Coalesce vs Partition](#Coalesce_vs_Partition)
-- [Cache vs Persist](#Cache_vs_Persist)
-- [Distinct vs DropDuplicates](#Distinct_vs_DropDuplicates)
-- [OrderBy vs Sort](#OrderBy_vs_Sort)
-- [First vs Head](#First_vs_Head)
-- [Filter vs Where](#Filter_vs_Where)
+- [Whats The Difference?](#Whats_The_Difference?)
 - [Printing RDD elements](#Printing_RDD_elements)
 - [Shared Variables](#Shared_Variables)
 - [SQL](#SQL)
@@ -123,30 +118,28 @@
 - TODO
 
 
-### Coalesce_vs_Partition
+### Whats_The_Difference?
+
+#### Coalesce vs Partition
 - `coalesce(numPartitions)`: Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. `coalesce` only can decrease num partitions (does NOT balance data on partitions) (shuffle flag disabled by default)
 - `repartition(numPartitions)`:	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. `repartion()` can increase or decrease num partitions (balanced partitions)
-
   
-### Cache_vs_Persist
+#### Cache vs Persist
 - persist can save the dataframe data as any persistance level: `MEMORY_ONLY`, `MEMORY_ONLY_2`, `MEMORY_AND_DISK`, `MEMORY_AND_DISK_2`, `DISK_ONLY`, or `DISK_ONLY_2`
 - cache just calls the persist function with choosing the persistance level to be `MEMORY_ONLY`
 - unpersist is a method but there is no `uncache()` function, unpersist will do that (also will auto uncache if not used for a while)
 
-
-### Distinct_vs_DropDuplicates
+#### Distinct vs DropDuplicates
 - When using `distinct()` you need a prior `select(colNames)` to select the columns on which you want to apply the deduplication and the returned Dataframe contains only these selected columns. While `dropDuplicates(colNames)` will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
+#### OrderBy vs Sort
+- Completely the same, aliases for one another
+- To sort by say 2 cols: `df.orderBy(desc("age"), "name").collect()`
 
-### OrderBy_vs_Sort
+#### First vs Head
 - TODO
 
-
-### First_vs_Head
-- TODO
-
-
-### Filter_vs_Where
+#### Filter vs Where
 - TODO
 
 
