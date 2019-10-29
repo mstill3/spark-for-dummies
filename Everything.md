@@ -4,7 +4,7 @@
 - [Method Categories](#Method_Categories)
 - [Transformations vs Actions](#Transformations_vs_Actions)
 - [Reading In Data](#Reading_In_Data)
-- [Whats The Difference?](#Whats_The_Difference?)
+- [Whats The Difference?](#Whats_The_Difference)
 - [Printing RDD elements](#Printing_RDD_elements)
 - [Shared Variables](#Shared_Variables)
 - [SQL](#SQL)
@@ -118,7 +118,7 @@
 - TODO
 
 
-### Whats_The_Difference?
+### Whats_The_Difference
 
 #### Coalesce vs Partition
 - `coalesce(numPartitions)`: Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. `coalesce` only can decrease num partitions (does NOT balance data on partitions) (shuffle flag disabled by default)
