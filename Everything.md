@@ -1,22 +1,22 @@
 # Spark 2 Notes
 
 #### Table of Contents
+- [Method Categories](#Method%20Categories)
 - [Transformations vs Actions vs Commands](#Transformations%20vs%20Actions)
+- [Reading In Data](#Reading%20In%20Data)
 - [Coalesce vs Partition](#Coalesce%20vs%20Partition)
 - [Cache vs Persist](#Cache%20vs%20Persist)
 - [Distinct vs DropDuplicates](#Distinct%20vs%20DropDuplicates)
+- [OrderBy vs Sort](#OrderBy%20vs%20Sort)
+- [First vs Head](#First%20vs%20Head)
+- [Filter vs Where](#Filter%20vs%20Where)
 - [Printing RDD elements](#Printing%20RDD%20elements)
 - [Shared Variables](#Shared%20Variables)
+- [SQL](#SQL)
+- [Windowing](#Windowing)
+- [GraphFrames](#GraphFrames)
+- [Machine Learning](#Machine%20Learning)
 - [Important Notes](#Important%20Notes)
-
-### Reading In Data
-- CSV 
-  - TODO (params, output mode and format)
-- Parquet
-  - TODO (params)
-- JSON
-  - TODO (params)
-- TODO
 
 ### Method Categories
 
@@ -27,7 +27,7 @@
   * cache
   * persist
   * unpersist
-
+  
 </details>
 
 <details>
@@ -69,8 +69,7 @@
   * sample
   * union
   * zip
-
-
+  
 </details>
 
 <details>
@@ -108,7 +107,18 @@
 - `read()` is not an action, however if the `inferSchema` option is set then it acts as one
 
 - Optimzations done in the action, for improving the plan for all the transformations
-  
+
+### Reading In Data
+- CSV 
+  - TODO (params, output mode and format)
+- Parquet
+  - TODO (params)
+- JSON
+  - TODO (params)
+- Custom
+  - How create new reader? Add spark module?
+- TODO
+
 ### Coalesce vs Partition
 - `coalesce(numPartitions)`: Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset. Avoids full shuffles. `coalesce` only can decrease num partitions (does NOT balance data on partitions) (shuffle flag disabled by default)
 - `repartition(numPartitions)`:	Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network. `repartion()` can increase or decrease num partitions (balanced partitions)
@@ -141,6 +151,7 @@
   - Programmers can also create their own types of Accumulators by subclassing `AccumulatorParam`
   - For accumulator updates performed inside actions only, Spark guarantees that each task’s update to the accumulator will only be applied once, i.e. restarted tasks will not update the value. In transformations, users should be aware of that each task’s update may be applied more than once if tasks or job stages are re-executed.
   - Accumulators do not change the lazy evaluation model of Spark. If they are being updated within an operation on an RDD, their value is only updated once that RDD is computed as part of an action. Consequently, accumulator updates are not guaranteed to be executed when made within a lazy transformation like `map()`
+  - - Problem with accumlators. Accumulators optimized?
 #### Broadcast Variables
   - Reference passed to data instead of data itself
   - Adds a hint/marks the dataframe to be broadcasted (readonly only cached)
@@ -156,7 +167,7 @@
 ### Windowing
 - TODO (params)
 
-### Graphframes
+### GraphFrames
   - Fully review this [notebook](https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)
   - `GraphFrame(verticesDF, edgesDF)` where verticesDF has `id` column and edgesDF has `src` and `dst` columns
   - Breadth-first search `g.bfs("name = 'Esther'", "age < 32")` or `g.bfs(fromExpr = "name = 'Esther'", toExpr = "age < 32", edgeFilter = "relationship != 'friend'", maxPathLength = 3)`
@@ -166,6 +177,10 @@
   - `labelPropagation(maxIter)` assigns groupings of similarly connected vertices
   - Shortest Path algorithm `g.shortestPaths(landmarks=["a", "d"])`
   - Motif finding is a search given a set of generic vertices and their connections to other vertices `g.find("(a)-[e]->(b); (b)-[e2]->(a)")`
+
+### Machine Learning
+  - TODO
+  - Pipeline featurizer bottleneck?
 
 ### Important Notes
 - `MEMORY_ONLY`: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. __This is the default persistance level__
@@ -185,19 +200,15 @@
 - `explode()` takes an array and seperates each element onto a new row
 - In the case of Python, the cleanest version is the `col("column-name")` variant as opposed to just specifying colName or `df[colName]`
 - The number of partitions used in Spark is configurable and having too few (causing less concurrency, data skewing and improper resource utilization) or too many (causing task scheduling to take more time than actual execution time) partitions is not good
-
+- DataFrames have NO method `tail()`
 
 ### Others
 - Dictionary mode pull df value is bad for large data 
 - How many tasks should u have in relation to num cores? Equal or multiple  
 
-- Problem with accumlators. Accumulators optimized
 - Scala akka
 - Spark heap as much memory as mapreduce?
-- How create new reader? Add spark module?
-- Pipeline featurizer bottleneck
 - Reduce by key bottleneck
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - When triggered accumulators
 - How to change value of an rdd
-- What does `tail()` do?
