@@ -1,4 +1,4 @@
-# Spark 2 Notes
+# My Spark 2.X Notes
 
 #### Table of Contents
 - [Method Categories](#Method_Categories)
@@ -129,8 +129,8 @@
 
   
 ### Cache_vs_Persist
-- persist can save the dataframe data to any data source `DISK_ONLY`, `MEMEORY_ONLY`, ...
-- cache just calls the persist function with choosing the datasource to be `MEMORY_ONLY`
+- persist can save the dataframe data as any persistance level: `MEMORY_ONLY`, `MEMORY_ONLY_2`, `MEMORY_AND_DISK`, `MEMORY_AND_DISK_2`, `DISK_ONLY`, or `DISK_ONLY_2`
+- cache just calls the persist function with choosing the persistance level to be `MEMORY_ONLY`
 - unpersist is a method but there is no `uncache()` function, unpersist will do that (also will auto uncache if not used for a while)
 
 
@@ -195,7 +195,7 @@
 - Motif finding is a search given a set of generic vertices and their connections to other vertices `g.find("(a)-[e]->(b); (b)-[e2]->(a)")`
 
 
-# Machine_Learning
+### Machine_Learning
 - TODO
 - Pipeline featurizer bottleneck?
 
