@@ -135,6 +135,13 @@
 ### Graphframes
   - Fully review this [notebook](https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)
   - `GraphFrame(verticesDF, edgesDF)` where verticesDF has `id` column and edgesDF has `src` and `dst` columns
+  - BFS `g.bfs("name = 'Esther'", "age < 32")` or `g.bfs(fromExpr = "name = 'Esther'", toExpr = "age < 32", edgeFilter = "relationship != 'friend'", maxPathLength = 3)`
+  - `triangleCount()` is how many loop backs the node has to itself
+  - `graphframe.degrees()` = df(sum(inDegrees + outDegrees))
+  - `pageRank(resetProbability=0.15, tol=0.01)`, `connectedComponents(maxIter)` and `stronglyConnectedComponents(maxIter)` are all values showing how the vertex is connected within the graph
+  - `labelPropagation(maxIter)` assigns groupings of similarly connected vertices
+  - Shortest Path algorithm `g.shortestPaths(landmarks=["a", "d"])`
+  - Motif finding is a search given a set of generic vertices and their connections to other vertices `g.find("(a)-[e]->(b); (b)-[e2]->(a)")`
 
 ### Important Notes
 - `MEMORY_ONLY`: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. __This is the default persistance level__
