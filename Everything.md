@@ -132,6 +132,10 @@
   - Spark will attempt to auto broadcast join during any join operation. The default auto broadcast threshold is 10M 
   - Broadcast allows to send a read-only variable cached on each node once, rather than sending a copy for all tasks. 
 
+### Graphframes
+  - Fully review this [notebook](https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)
+  - `GraphFrame(verticesDF, edgesDF)` where verticesDF has `id` column and edgesDF has `src` and `dst` columns
+
 ### Important Notes
 - `MEMORY_ONLY`: Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. __This is the default persistance level__
 -  In Python, stored objects will always be serialized with the Pickle library, so it does not matter whether you choose a serialized level. The available storage levels in Python include `MEMORY_ONLY`, `MEMORY_ONLY_2`, `MEMORY_AND_DISK`, `MEMORY_AND_DISK_2`, `DISK_ONLY`, and `DISK_ONLY_2`
@@ -151,7 +155,7 @@
 
 
 ### Others
-- Graph frame bfs inexpression Params
+- 
 - Problem with accumlators. Accumulators optimized
 - How many tasks should u have in relation to num cores? Equal or multiple  
 - Scala akka
