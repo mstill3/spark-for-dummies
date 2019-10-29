@@ -1,6 +1,6 @@
 # My Spark 2.X Notes
 
-#### Table of Contents
+### Table of Contents
 - [Method Categories](#Method_Categories)
 - [Transformations vs Actions](#Transformations_vs_Actions)
 - [Reading In Data](#Reading_In_Data)
@@ -114,19 +114,18 @@
 
 
 ### Reading_In_Data
-- CSV 
-  - TODO (params, output mode and format)
 
-- Parquet
-  - TODO (params)
+#### CSV 
+- TODO (params, output mode and format)
 
-- JSON
-  - TODO (params)
+#### Parquet
+- TODO (params)
 
-- Custom
-  - How create new reader? Add spark module?
+#### JSON
+- TODO (params)
 
-- TODO
+#### Custom
+- How create new reader? Add spark module?
 
 
 ### Method_Distinctions
@@ -143,7 +142,7 @@
 #### Distinct vs DropDuplicates
 - When using `distinct()` you need a prior `select(colNames)` to select the columns on which you want to apply the deduplication and the returned Dataframe contains only these selected columns. While `dropDuplicates(colNames)` will return all the columns of the initial dataframe after removing duplicated rows as per the columns
 
-### When vs Otherwise
+#### When vs Otherwise
 - `when()` is the if and `otherwise()` is the else
 - Example: `df.select(df.name, F.when(df.age > 3, 1).otherwise(0)).show()`
 
