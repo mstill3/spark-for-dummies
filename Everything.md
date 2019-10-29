@@ -198,14 +198,12 @@
 - When accessing elements from a tuple tup[0] is the corresponding data element in col 1 and tup[1] would be for the data element in col 2  
 - `split(col('text'), "")` Splits the sentence into letters array. So `split(“”)[0]` is the first letter
 - `explode()` takes an array and seperates each element onto a new row
-- In the case of Python, the cleanest version is the `col("column-name")` variant as opposed to just specifying colName or `df[colName]`
+- In the case of Python, the cleanest version is the `col("column-name")` variant as opposed to just specifying colName or `df[colName]`(dictionary mode). It more efficently calls the column directly
 - The number of partitions used in Spark is configurable and having too few (causing less concurrency, data skewing and improper resource utilization) or too many (causing task scheduling to take more time than actual execution time) partitions is not good
-- DataFrames have NO method `tail()`
+- DataFrames do NOT have a `tail()` method
+- The number of tasks and number of partitions should be a __multiple__ of the number of cores
 
 ### Others
-- Dictionary mode pull df value is bad for large data 
-- How many tasks should u have in relation to num cores? Equal or multiple  
-
 - Scala akka
 - Spark heap as much memory as mapreduce?
 - Reduce by key bottleneck
