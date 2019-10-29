@@ -114,15 +114,46 @@
 
 
 ### Reading_In_Data
-
-#### CSV 
 - TODO (params, output mode and format)
 
+#### CSV 
+- Slow inference speed
+- There are a large number of options when reading CSV files including headers, column separator, escaping, etc.
+- We can allow Spark to infer the schema at the cost of first reading in the entire file.
+- Large CSV files should always have a schema pre-defined.
+
 #### Parquet
-- TODO (params)
+- Medium/Fast inference speed
+- Parquet files are the preferred file format for big-data.
+- It is a columnar file format.
+- It is a splittable file format.
+- It offers a lot of performance benefits over other formats including predicate pushdown.
+- Unlike CSV, the schema is read in, not inferred.
+- Reading the schema from Parquet's metadata can be extremely efficient.
+
+#### Tables
+- No inference, carried over
+- The Databricks platform allows us to register a huge variety of data sources as tables via the Databricks UI.
+- Any DataFrame (from CSV, Parquet, whatever) can be registered as a temporary view.
+- Tables/Views can be loaded via the DataFrameReader to produce a DataFrame
+- Tables/Views can be used directly in SQL statements.
 
 #### JSON
-- TODO (params)
+- Slow inference speed
+- JSON represents complex data types unlike CSV's flat format.
+- Has many of the same limitations as CSV (needing to read the entire file to infer the schema)
+- Like CSV has a lot of options allowing control on date formats, escaping, single vs. multiline JSON, etc.
+
+#### Text
+- No inference, no need just straight text
+- Reads one line of text as a single column named value.
+- Is the basis for more complex file formats such as fixed-width text files.
+
+#### JDBC
+- Fast inference speed
+- Requires one database connection per partition.
+- Has the potential to overwhelm the database.
+- Requires specification of a stride to properly balance partitions.
 
 #### Custom
 - How create new reader? Add spark module?
