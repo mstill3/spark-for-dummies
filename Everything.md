@@ -106,7 +106,7 @@
 ### Transformations_vs_Actions
 
 - Actions return a value back to the driver program
-- Transformations create a new dataset form an existing one
+- Transformations create a new dataset from an existing one
 - Narrow transformations are the result of `map()`, `filter()` and such that is from the data from a single partition only, i.e. it is self-sustained. An output RDD has partitions with records that originate from a single partition in the parent RDD. Only a limited subset of partitions used to calculate the result. Spark groups narrow transformations as a stage which is called pipelining.
 - Wide transformations are the result of `groupByKey()` and `reduceByKey()`. The data required to compute the records in a single partition may reside in many partitions of the parent RDD. Wide transformations are also called shuffle transformations as they may or may not depend on a shuffle. All of the tuples with the same key must end up in the same partition, processed by the same task. To satisfy these operations, Spark must execute RDD shuffle, which transfers data across cluster and results in a new stage with a new set of partitions.
 
