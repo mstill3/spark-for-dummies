@@ -21,5 +21,5 @@ Understanding Spark 2 one step at a time
 5. Follow along with these official [Spark Examples](https://spark.apache.org/examples.html)
 6. Follow these [jupyter directions](./projects/jupyter/README.md) to install Spark and expore some of the files
 7. Follow these [databricks instructions](./projects/databricks)
-8. Take the [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html) (NOTE: answer to Q4 is incorrect)
+8. Take the [Databricks Practice Cert](https://databricks-prod-cloudfront.cloud.databricks.com/public/793177bc53e528530b06c78a4fa0e086/0/6221173/100020/latest.html)
 9. Read over [my notes](./Everything.md)
