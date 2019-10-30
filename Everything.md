@@ -238,7 +238,10 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 
 
 ### RDD
-- How to change value of an rdd?
+- RDD's are immutable so they cannot be changed directly.
+- RDD's can be 'changed' by setting it to an editted existing rdd 
+- An example: `rdd = rdd.map(lambda word: (word, 1))`
+
 
 
 ### GraphFrames
@@ -285,6 +288,13 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - limited-memory BFGS (L-BFGS)
 
 
+### Cluster Managers
+- All three cluster managers provide various scheduling capabilities but Apache Mesos provides the finest grained sharing options.
+- High availability is offered by all three cluster managers but Hadoop YARN doesn’t need to run a separate ZooKeeper Failover Controller.
+- Security is provided on all of the managers. Apache Mesos uses a pluggable architecture for its security module with the default module using Cyrus SASL. The Standalone cluster manager uses a shared secret and Hadoop YARN uses Kerberos. All three use SSL for data encryption.
+- Finally, the Apache Standalone Cluster Manager is the easiest to get started with and provides a fairly complete set of capabilities. The scripts are simple and straightforward to use. So, if developing a new application this is the quickest way to get started.
+
+
 ### Akka
 - Apache Spark is actually built on Akka.
 - Akka is a general purpose framework to create reactive, distributed, parallel and resilient concurrent applications in Scala or Java. Akka uses the Actor model to hide all the thread-related code and gives you really simple and helpful interfaces to implement a scalable and fault-tolerant system easily. A good example for Akka is a real-time application that consumes and process data coming from mobile phones and sends them to some kind of storage.
@@ -317,4 +327,3 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - The number of tasks and number of partitions should be a __multiple__ of the number of cores
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 - `reduceByKey()` is a bottleneck because it is a wide transformation
-- Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
