@@ -16,6 +16,7 @@
 
 
 ### Method_Categories
+Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-flash-cards/)
 
 <details>
   <summary> Commands </summary>
