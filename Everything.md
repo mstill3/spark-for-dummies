@@ -10,8 +10,10 @@
 - [Shared Variables](#Shared_Variables)
 - [SQL](#SQL)
 - [Windowing](#Windowing)
+- [RDD](RDD)
 - [GraphFrames](#GraphFrames)
 - [Machine Learning](#Machine_Learning)
+- [Akka](#Akka)
 - [Important Notes](#Important_Notes)
 
 
@@ -238,6 +240,7 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 
 ### Windowing
 - TODO (params)
+
 
 ### RDD
 - How to change value of an rdd?
