@@ -6,7 +6,6 @@
 - [Reading In Data](#Reading_In_Data)
 - [Writing Out Data](#Writing_Out_Data)
 - [Method Distinctions](#Method_Distinctions)
-- [Printing RDD elements](#Printing_RDD_elements)
 - [Shared Variables](#Shared_Variables)
 - [SQL](#SQL)
 - [Windowing](#Windowing)
@@ -210,10 +209,6 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - An example: `filteredDF = (sortedDescDF.filter( col("project") == "en"))`
 
 
-### Printing_RDD_elements
-- Another common idiom is attempting to print out the elements of an RDD using `rdd.foreach(println)` or `rdd.map(println)`. On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the `collect()` method to first bring the RDD to the driver node thus: `rdd.collect().foreach(println)`. This can cause the driver to run out of memory, though, because `collect()` fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is like this: `rdd.take(100).foreach(println)`
-
-
 ### Shared_Variables
 
 #### Accumulators
@@ -305,6 +300,7 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - Spark also automatically persists some intermediate data in shuffle operations (e.g. reduceByKey), even without users calling persist. This is done to avoid recomputing the entire input if a node fails during the shuffle. We still recommend users call persist on the resulting RDD if they plan to reuse it
 -  Using Structured Streaming, the file sink type is idempotent and can provide end-to-end EXACTLY-ONLY semantics in a Structured Streaming job. Kafka and foreach sinks are fault tolerant >= 1,  memory and console are not fault tolerant
 - Using replayable sources and idempotent sinks, Structured Streaming can ensure end-to-end exactly-once semantics under any failure
+- Another common idiom is attempting to print out the elements of an RDD using `rdd.foreach(println)` or `rdd.map(println)`. On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the `collect()` method to first bring the RDD to the driver node thus: `rdd.collect().foreach(println)`. This can cause the driver to run out of memory, though, because `collect()` fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is like this: `rdd.take(100).foreach(println)`
 - Tungsten is a Spark SQL component that provides increased performance by rewriting Spark operations in bytecode, at runtime. Tungsten suppresses virtual functions and leverages close to bare metal performance by focusing on jobs CPU and memory efficiency
 - Explicit caching can decrease application performance by interferring with the Catalyst optimizer's ability to optimize some queries
 - Change default number shuffle partitions `sqlContext.setConf("spark.sql.shuffle.partitions", "300")`
