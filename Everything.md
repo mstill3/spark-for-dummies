@@ -163,8 +163,7 @@
 - Example: `spark.readStream.format("text")`
 
 #### Custom
-- How create new reader? Add spark module?
-
+- Write custom class that implements the Datasource API
 
 ### Writing_Out_Data
 
@@ -221,7 +220,6 @@
 - Programmers can also create their own types of Accumulators by subclassing `AccumulatorParam`
 - For accumulator updates performed inside actions only, Spark guarantees that each task’s update to the accumulator will only be applied once, i.e. restarted tasks will not update the value. In transformations, users should be aware of that each task’s update may be applied more than once if tasks or job stages are re-executed.
 - Accumulators do not change the lazy evaluation model of Spark. If they are being updated within an operation on an RDD, their value is only updated once that RDD is computed as part of an action. Consequently, accumulator updates are not guaranteed to be executed when made within a lazy transformation like `map()`
-- Problem with accumlators. Accumulators optimized?
 
 #### Broadcast Variables
 - Reference passed to data instead of data itself
@@ -239,6 +237,9 @@
 
 ### Windowing
 - TODO (params)
+
+### RDD
+- How to change value of an rdd?
 
 
 ### GraphFrames
@@ -307,6 +308,8 @@
 - DataFrames do NOT have a `tail()` method
 - The number of tasks and number of partitions should be a __multiple__ of the number of cores
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
+- `reduceByKey()` is a bottleneck because it is a wide transformation
+- Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 
 ### Akka
 - Apache Spark is actually built on Akka.
@@ -314,9 +317,3 @@
 - Apache Spark (not Spark Streaming) is a framework to process batch data using a generalized version of the map-reduce algorithm. A good example for Apache Spark is a calculation of some metrics of stored data to get a better insight of your data. The data gets loaded and processed on demand.
 - Apache Spark Streaming is able to perform similar actions and functions on near real-time small batches of data the same way you would do it if the data would be already stored.
 - I believe that as of Spark 1.6 Spark no longer uses Akka - Akka was replaced by Netty. Regardless, Spark used Akka only for communicating between nodes, not processing
-
-### Others
-- Reduce by key bottleneck
-- Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
-- When triggered accumulators
-- How to change value of an rdd
