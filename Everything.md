@@ -308,8 +308,14 @@
 - The number of tasks and number of partitions should be a __multiple__ of the number of cores
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 
+### Akka
+- Apache Spark is actually built on Akka.
+- Akka is a general purpose framework to create reactive, distributed, parallel and resilient concurrent applications in Scala or Java. Akka uses the Actor model to hide all the thread-related code and gives you really simple and helpful interfaces to implement a scalable and fault-tolerant system easily. A good example for Akka is a real-time application that consumes and process data coming from mobile phones and sends them to some kind of storage.
+- Apache Spark (not Spark Streaming) is a framework to process batch data using a generalized version of the map-reduce algorithm. A good example for Apache Spark is a calculation of some metrics of stored data to get a better insight of your data. The data gets loaded and processed on demand.
+- Apache Spark Streaming is able to perform similar actions and functions on near real-time small batches of data the same way you would do it if the data would be already stored.
+- I believe that as of Spark 1.6 Spark no longer uses Akka - Akka was replaced by Netty. Regardless, Spark used Akka only for communicating between nodes, not processing
+
 ### Others
-- Scala akka
 - Reduce by key bottleneck
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
 - When triggered accumulators
