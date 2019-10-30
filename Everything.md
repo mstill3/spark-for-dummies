@@ -287,6 +287,14 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - limited-memory BFGS (L-BFGS)
 
 
+### Akka
+- Apache Spark is actually built on Akka.
+- Akka is a general purpose framework to create reactive, distributed, parallel and resilient concurrent applications in Scala or Java. Akka uses the Actor model to hide all the thread-related code and gives you really simple and helpful interfaces to implement a scalable and fault-tolerant system easily. A good example for Akka is a real-time application that consumes and process data coming from mobile phones and sends them to some kind of storage.
+- Apache Spark (not Spark Streaming) is a framework to process batch data using a generalized version of the map-reduce algorithm. A good example for Apache Spark is a calculation of some metrics of stored data to get a better insight of your data. The data gets loaded and processed on demand.
+- Apache Spark Streaming is able to perform similar actions and functions on near real-time small batches of data the same way you would do it if the data would be already stored.
+- I believe that as of Spark 1.6 Spark no longer uses Akka - Akka was replaced by Netty. Regardless, Spark used Akka only for communicating between nodes, not processing
+
+
 ### Important_Notes
 - `MEMORY_AND_DISK`: (For DataFrames) __This is the default persistance level for DataFrames__
 - `MEMORY_ONLY`: (For RDDs) Store RDD as deserialized Java objects in the JVM. If the RDD does not fit in memory, some partitions will not be cached and will be recomputed on the fly each time they're needed. __This is the default persistance level for RDDs__
@@ -311,10 +319,3 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 - `reduceByKey()` is a bottleneck because it is a wide transformation
 - Doesn’t scale Horizontally? Stand alone, local, mesos, yarn
-
-### Akka
-- Apache Spark is actually built on Akka.
-- Akka is a general purpose framework to create reactive, distributed, parallel and resilient concurrent applications in Scala or Java. Akka uses the Actor model to hide all the thread-related code and gives you really simple and helpful interfaces to implement a scalable and fault-tolerant system easily. A good example for Akka is a real-time application that consumes and process data coming from mobile phones and sends them to some kind of storage.
-- Apache Spark (not Spark Streaming) is a framework to process batch data using a generalized version of the map-reduce algorithm. A good example for Apache Spark is a calculation of some metrics of stored data to get a better insight of your data. The data gets loaded and processed on demand.
-- Apache Spark Streaming is able to perform similar actions and functions on near real-time small batches of data the same way you would do it if the data would be already stored.
-- I believe that as of Spark 1.6 Spark no longer uses Akka - Akka was replaced by Netty. Regardless, Spark used Akka only for communicating between nodes, not processing
