@@ -328,4 +328,4 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 - `reduceByKey()` is a bottleneck because it is a wide transformation
 - When we shuffle data, it creates what is known as a stage boundary. Stage boundaries represent a process bottleneck.
-
+- So what is the benefit of working backward through your action's lineage? Answer: It allows Spark to determine if it is necessary to execute every transformation.
