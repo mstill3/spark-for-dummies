@@ -340,6 +340,7 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - The Columnar Predicate Pushdown takes place when a filter can be pushed down to the original data source, such as a database server.
 - Cores refer to the CPU cores, one thread are multi-plexed to the CPU cores and slots are a Spark conceptualization of a thread.
 - In a Spark application, when you invoke an action on RDD, a job is created. Jobs are the main function that has to be done and is submitted to Spark. The jobs are divided into stages depending on how they can be separately carried out (mainly on shuffle boundaries). Then, these stages are divided into tasks
-
-
-![]()
+- spark java kryo serializer
+- Standalone cluster does not scale horizontallly
+- Look at pyspark.sql.functions.window(timeColumn, windowDuration, slideDuration=None, startTime=None)[source]
+- Does pipeline order matter when incols and outcols specified?
