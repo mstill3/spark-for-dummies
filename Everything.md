@@ -329,3 +329,17 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - `reduceByKey()` is a bottleneck because it is a wide transformation
 - When we shuffle data, it creates what is known as a stage boundary. Stage boundaries represent a process bottleneck.
 - So what is the benefit of working backward through your action's lineage? Answer: It allows Spark to determine if it is necessary to execute every transformation.
+- Jobs trigger stages
+- Stages must complete in order
+- Pipelineing: data is read into RAM and several transformations are sequentially executed against that data
+- Lazy evaulations allow for optimizations only
+- Catalyst: Unsolved logical, logical, optimized logical, physical (uses cost model), selected physical plan
+- UDFs: Whare are some the gotcha's with UDFs? Cannot be optimized, Have to be careful about serialization, Slower than built-in functions, There is almost always a built in function that alrady does what you want.
+- How do we change the threshold? `spark.sql.autoBroadcastJoinThreshold`
+- Predicate Pushdown: simply the total query before performing operation on all of them
+- The Columnar Predicate Pushdown takes place when a filter can be pushed down to the original data source, such as a database server.
+- Cores refer to the CPU cores, one thread are multi-plexed to the CPU cores and slots are a Spark conceptualization of a thread.
+- In a Spark application, when you invoke an action on RDD, a job is created. Jobs are the main function that has to be done and is submitted to Spark. The jobs are divided into stages depending on how they can be separately carried out (mainly on shuffle boundaries). Then, these stages are divided into tasks
+
+
+![]()
