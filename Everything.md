@@ -327,3 +327,5 @@ Test your method distinct skills [here](https://quizlet.com/447819496/spark-2-fl
 - The number of tasks and number of partitions should be a __multiple__ of the number of cores
 - Spark is 100x faster in memory and 10x faster on disk (heap) than mapreduce
 - `reduceByKey()` is a bottleneck because it is a wide transformation
+- When we shuffle data, it creates what is known as a stage boundary. Stage boundaries represent a process bottleneck.
+
